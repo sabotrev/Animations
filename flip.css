@@ -1,0 +1,86 @@
+body {
+	background: lightgray;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-4 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.wrapper {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  backface-visibility: hidden;
+  text-align: center;
+}
+
+.wrapper h1 {
+  background-color: #393939;
+  color: #393939;
+  width: 1em;
+  margin: 0;
+  border-radius: 0.1em;
+  text-transform: uppercase;
+  font-size: 20vw;
+  position: absolute;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.wrapper h1::before {
+  content: attr(data-heading);
+  color: #fbf7f4;
+  width: 1em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 49%;
+  border-bottom: black solid 0.03em;
+} 
+
+
+.wrapper h1::after {
+  content: attr(data-heading);
+  background-color: #222222;
+  color: #222222;
+  width: 1em;
+  border-radius: 0.1em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: skew(0) scale(1, 1);
+  clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%);
+  transform: rotateX(180deg);
+}
+
+.wrapper h1:hover::after {
+  animation: flip 1s;
+  animation-fill-mode: forwards;
+} 
+
+@keyframes flip {
+  0% {
+    transform: rotateX(180deg);
+    color: #222222;
+  }
+  25% {
+    color: #222222;
+  }
+  50% {
+    color: #fbf7f4;
+  }
+  100% {
+    color: #fbf7f4;
+    transform: rotateX(0deg);
+  }
+}
